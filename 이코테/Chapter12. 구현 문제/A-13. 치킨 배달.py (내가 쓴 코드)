@@ -1,0 +1,37 @@
+from itertools import combinations
+INF = int(1e9)
+
+def distance(x,y):
+    result = abs(x[0]-y[0]) + abs(x[1]-y[1])
+    return result
+
+def simulation():
+    n,m = map(int, input().split())
+    board = []
+    houses = []
+    chicken = []
+    chicken_score = INF #3
+    for i in range(n):
+        board.append(list(map(int, input().split())))
+    
+    for i in range(n):
+        for j in range(n):
+            if board[i][j] == 1:
+                houses.append((i,j))
+            elif board[i][j] == 2:
+                chicken.append((i,j))
+    
+    choices = list(combinations(chicken, m))
+
+    for choice in choices: # 치킨집 조합 하나
+        total = 0 # (2)
+        for house in houses: # 모든집
+            sub = INF # (1)
+            for cho in choice: # 집하나가 치킨거리
+                sub = min(sub, distance(house, cho))
+            total += sub # 하나의 집의 치킨거리
+        chicken_score = min(chicken_score, total)
+    return chicken_score
+
+result = simulation()
+print(result)
