@@ -20,3 +20,4 @@ data = list(map(int, input().split()))
 start = 0
 end = max(data)
 print(binary_search(data, m, start, end))
+
