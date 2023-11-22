@@ -1,0 +1,18 @@
+MAX = int(1e9)
+n,m = map(int, input().split())
+d = [MAX]*(m+1)
+d[0] = 0
+coins = []
+
+for i in range(n):
+    coins.append(int(input()))
+
+for coin in coins:
+    for i in range(coin, m+1):
+        if d[i-coin] != MAX:
+            d[i] = min(d[i], d[i-coin]+1)
+
+if d[m] == MAX:
+    print(-1)
+else:
+    print(d[m])
