@@ -8,3 +8,4 @@ for i in data[1:]:
         result *= i
 
 print(result)
+
