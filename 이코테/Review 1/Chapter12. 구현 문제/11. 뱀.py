@@ -55,10 +55,11 @@ def solution():
                 q.popleft()
                 q.append((nx,ny))
         
+        x,y = nx,ny # 확정 바꿔주고
+        
         for i in turn_array:
             if time == i[0]:
                 direction = turn_direction(direction, i[1])
-        x,y = nx,ny
     
     return time
 
